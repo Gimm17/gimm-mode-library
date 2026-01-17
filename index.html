@@ -12,6 +12,19 @@
     <meta name="theme-color" content="#0a0a0a">
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                const hash = window.location.hash || "";
+                if (hash.includes("confirmation_token") || hash.includes("invite_token") || hash.includes("recovery_token")) {
+                    // lempar ke /admin sambil bawa token
+                    window.location.href = "/admin/" + hash;
+                }
+            });
+        }
+    </script>
+
 
     <style>
         .card-hover {
@@ -416,7 +429,8 @@ Bantu susun BAB 1–3 skripsi cyberbullying.</pre>
                         <h3 class="text-xl font-bold">About Gimm Mode Library</h3>
                         <p class="text-sm muted mt-1">Biar semua orang bisa pakai “mode prompt” tanpa ribet.</p>
                     </div>
-                    <button id="closeAbout" class="btn-press px-3 py-2 rounded-xl panel-dark border border-soft">✕</button>
+                    <button id="closeAbout"
+                        class="btn-press px-3 py-2 rounded-xl panel-dark border border-soft">✕</button>
                 </div>
 
                 <div class="mt-4 space-y-3 text-sm text-zinc-200">
@@ -426,21 +440,28 @@ Bantu susun BAB 1–3 skripsi cyberbullying.</pre>
                     </p>
                     <div class="rounded-2xl border border-soft panel-dark p-4">
                         <p class="font-semibold">Kenapa “Use Prompt” auto-copy?</p>
-                        <p class="mt-1 muted">Biar kompatibel di HP/desktop. Prefill link ChatGPT kadang ngambek, jadi yang paling aman: copy dulu, baru buka ChatGPT.</p>
+                        <p class="mt-1 muted">Biar kompatibel di HP/desktop. Prefill link ChatGPT kadang ngambek, jadi
+                            yang paling aman: copy dulu, baru buka ChatGPT.</p>
                     </div>
                     <div class="rounded-2xl border border-soft panel-dark p-4">
                         <p class="font-semibold">Creator mode (admin)</p>
-                        <p class="mt-1 muted">Klik logo 🗂️ 7x → masuk /admin. Edit prompt cuma buat creator (login Netlify).</p>
+                        <p class="mt-1 muted">Klik logo 🗂️ 7x → masuk /admin. Edit prompt cuma buat creator (login
+                            Netlify).</p>
                     </div>
                     <div class="rounded-2xl border border-soft panel-dark p-4">
                         <p class="font-semibold">Share</p>
-                        <p class="mt-1 muted">Buka satu mode → Copy Link / Share → kirim ke temen, mereka tinggal copy prompt-nya.</p>
+                        <p class="mt-1 muted">Buka satu mode → Copy Link / Share → kirim ke temen, mereka tinggal copy
+                            prompt-nya.</p>
                     </div>
                 </div>
 
                 <div class="mt-5 flex flex-wrap gap-2">
-                    <a href="#cara-pakai" class="btn-press px-3 py-2 rounded-xl bg-white text-black text-sm font-semibold hover:opacity-90">Cara Pakai</a>
-                    <button id="copySiteLinkBtn" class="btn-press px-3 py-2 rounded-xl panel-dark border border-soft text-sm">Copy Site Link</button>
+                    <a href="#cara-pakai"
+                        class="btn-press px-3 py-2 rounded-xl bg-white text-black text-sm font-semibold hover:opacity-90">Cara
+                        Pakai</a>
+                    <button id="copySiteLinkBtn"
+                        class="btn-press px-3 py-2 rounded-xl panel-dark border border-soft text-sm">Copy Site
+                        Link</button>
                 </div>
             </div>
         </div>
